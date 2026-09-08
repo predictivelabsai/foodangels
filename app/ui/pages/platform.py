@@ -245,6 +245,7 @@ PUBLIC_NAV_LINKS = (
     ("Industries", "/industries"),
     ("Tour", "/tour"),
     ("Integrations", "/integrations"),
+    ("Pricing", "/#pricing"),
     ("Partners", "/partners"),
     ("Compare", "/compare"),
     ("Developers", "/developers"),
@@ -346,6 +347,18 @@ def _partner_grid():
         cls="partner-grid",
     )
 
+
+
+def pricing_section():
+    return Section(
+        Div(Div(Span("Pricing", cls="kicker"), H2("Simple pricing for every FastSME product.")), P("Every Fast* product uses the same two options: bring your own cloud for free, or host with us for €1 per month.", cls="section-intro"), cls="section-head"),
+        Div(
+            Article(Span("BYOC", cls="kicker"), H3("Bring Your Own Cloud"), P(Strong("Free")), P("Self-host on your own infrastructure or cloud. Full control of data and upgrades. No per-seat platform fee."), cls="card"),
+            Article(Span("Hosted", cls="kicker"), H3("Host with us"), P(Strong("€1 / month")), P("We run the product for you on FastSME-managed infrastructure. €1 per product per month."), cls="card"),
+            cls="card-grid",
+        ),
+        id="pricing", cls="section",
+    )
 
 def landing_page(message: str = ""):
     capabilities = (
@@ -622,7 +635,8 @@ def landing_page(message: str = ""):
                     cls="section",
                     id="integrations",
                 ),
-                Section(
+                pricing_section(),
+                    Section(
                     Div(Div(Span("Partners", cls="kicker"), H2("Connect with trusted integration specialists.")), P("Identity, software delivery, data engineering and applied-AI expertise for FastSME implementations.", cls="section-intro"), cls="section-head"),
                     _partner_grid(),
                     A("Meet our integration partners", href="/partners", cls="button"),
